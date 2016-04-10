@@ -1,0 +1,33 @@
+﻿Peter Vlahakis (vlahakis@umich)
+Peter Eldred (eldredpe@umich)
+
+
+Title: Amazon Review Star Rating Predictor
+Project Type: Software
+
+
+Motivation
+* We want to provide businesses and consumers with more accurate product review data to better inform product development and purchasing decisions respectively. We think consumers inconsistently and inaccurately rate products online, making it difficult for businesses and other consumers to evaluate and/or trust product ratings. For example, one reviewer might give Product A a score of 5/5 stars, while another reviewer with similar feelings towards Product A a score of 3/5 stars. We believe that the best way to quantitatively score a product review is to ask the user to provided a detailed account of their experience with the product using natural language, then employ text classification to produce a reliable, data-driven product score.
+
+
+Goals
+* Develop a product-scoring evaluation tool using text classification to deliver accurate and consistent product scores.
+
+
+Outline of experiments/software features
+* Our tool will take a chunk of product review text and output a predicted star rating based on the semantic content and sentiment of the text. The tool will differentiate between different product types in the form of Amazon departments (the same model will not be used to evaluate electronics as would be for jewelry) and may take into account other relevant factors like number of past reviews from the user and user experience level. 
+
+
+Additional tools
+* As this is both a classification and natural language processing task, we’ll definitely be using both the scikit learn and nltk packages for python.
+
+
+Datasets:
+* http://snap.stanford.edu/data/web-Amazon.html
+
+
+Proposed Evaluation Method
+* For this project evaluation can be handled by taking newly written Amazon reviews (not part of the dataset) and running them through our tool, then comparing the tool’s prediction with the actual review star ratings. Doing this with several hundred reviews and taking an average should give an accurate prediction of the tool’s margin of error in its output.
+
+
+Alternatively, we might ask neutral parties to give their own star ratings to the reviews, then judge accuracy according to the tool’s rating versus the actual user rating and the third party’s predicted rating. This would be a more interesting evaluation but is contingent on finding friends that will sit down and rate Amazon reviews for an hour.
