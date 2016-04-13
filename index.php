@@ -19,11 +19,10 @@
   <div class='container'>
     <div class='panel panel-primary dialog-panel'>
       <div class='panel-heading'>
-        <h5>Product Score Predictor</h5>
+        <h4>Product Score Predictor</h4>
       </div>
       <div class='panel-body'>
-
-        <form action='process.php' class='form-horizontal' method='post' target='hiddenFrame'>
+        <form action='process.php' id='reviewForm'class='form-horizontal' method='post' target='hiddenFrame'>
           <div class='form-group'>
             <label class='control-label col-md-2 col-md-offset-2'>Product Category</label>
             <div class='col-md-2'>
@@ -33,15 +32,16 @@
                 <option>Food</option>
                 <option>Health</option>
                 <option>Toys & Games</option>
+                <option>Other</option>
               </select>
             </div>
           </div>
           <div class='form-group'>
-            <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Review Date</label>
+            <label class='control-label col-md-2 col-md-offset-2' for='date'>Review Date</label>
             <div class='col-md-8'>
               <div class='col-md-3'>
                 <div class='form-group internal input-group'>
-                  <input class='form-control datepicker' id='id_checkin'>
+                  <input name='date' class='form-control datepicker' id='date'>
                   <span class='input-group-addon'>
                     <i class='glyphicon glyphicon-calendar'></i>
                   </span>
@@ -74,6 +74,16 @@
             </div>
           </div>
           <div class='form-group'>
+            <label class='control-label col-md-2 col-md-offset-2' for='id_adults'>Max Stars</label>
+            <div class='col-md-8'>
+              <div class='col-md-2'>
+                <div class='form-group internal'>
+                  <input name='max_stars' class='form-control col-md-8' id='stars' placeholder='5' value = '5' type='number' min="3" max="10">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='form-group'>
             <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Review Title</label>
             <div class='col-md-6'>
               <textarea name='review_title' class='form-control' id='id_title' placeholder='Put review title here...' rows='2'></textarea>
@@ -85,9 +95,15 @@
               <textarea name='review_text' class='form-control' id='id_text' placeholder='Put review text here...' rows='10'></textarea>
             </div>
           </div>
+          <div class="form-group">
+            <label class='control-label col-md-2 col-md-offset-2' for='score'>PREDICTED SCORE</label>
+            <div class='col-md-4'>
+              <input class="form-control" id="disabledInput" type="text" placeholder="10/10" disabled>
+            </div>
+          </div>
           <div class='form-group'>
             <div class='col-md-offset-4 col-md-3'>
-              <button class='btn-lg btn-primary' type='submit'>Predict Product Score</button>
+              <button class='btn-lg btn-primary' type='button' onclick="return getOutput();">Predict Product Score</button>
             </div>
           </div>
         </form>
